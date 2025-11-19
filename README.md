@@ -1,8 +1,11 @@
 AI-Code-Helper: Java Programming AI Learning Assistant
 
 This project is an AI learning assistant designed to help Java programmers: 
+
 Programming Learning Mentor: Provides clear learning roadmap planning and personalized suggestions
+
 Job Interview Assistant: Covers resume optimization, interview skills, and analysis of frequently asked questions
+
 Code Q&A Expert: Provides real-time answers to programming technical questions and offers code examples
 
 It is built using the Java/Spring Boot framework, leveraging LangChain4j for conversational capabilities and MyBatis/MySQL for persistent storage of chat memory.
