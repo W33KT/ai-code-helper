@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="MyBatis3">
+        <!-- 生成的实体类是否支持序列化 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 生成 toString 方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 去除自动生成的注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="<Your MySQL URL here>"
+                        userId="<Your MySQL username here>"
+                        password="<Your MySQL password here>">
+            <!-- 解决 mysql 8.0+ 获取不到表信息的问题 -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!-- 1. Model 生成位置 -->
+        <javaModelGenerator targetPackage="com.w33kt.aicodehelper.dao.entity" targetProject="src/main/java"/>
+
+        <!-- 2. Mapper XML 生成位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!-- 3. Mapper 接口生成位置 -->
+        <javaClientGenerator targetPackage="com.w33kt.aicodehelper.dao.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+
+        <!-- 指定表名 -->
+        <table tableName="chat_message_record" domainObjectName="ChatMessageRecord">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
