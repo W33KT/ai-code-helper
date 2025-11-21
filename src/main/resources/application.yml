@@ -21,3 +21,5 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+bigmodel:
+  api-key: <Your Api Key>

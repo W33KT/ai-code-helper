@@ -28,4 +28,11 @@ class AICodeHelperServiceTest {
         String response = aiCodeHelperService.chat(1, message);
         System.out.println(response);
     }
+
+    @Test
+    void testMcp() {
+        String message = "Do you know who is OA-LEAVE7?";
+        String response = aiCodeHelperService.chat(1, message);
+        System.out.println(response);
+    }
 }

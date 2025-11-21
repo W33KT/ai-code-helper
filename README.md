@@ -38,9 +38,9 @@ Follow these steps to set up and run the AI-Code-Helper service.
 
 ### 1. API Key Configuration (Model Access)
 
-Due to cost considerations, this project defaults to using Alibaba's Tongyi Qianwen model.
+Due to cost considerations, this project defaults to using Alibaba's Tongyi Qianwen model, and BigModel for MCP.
 
-* **Obtain API Key:** Visit the Alibaba Cloud console to apply for your API Key: [https://bailian.console.aliyun.com/?tab=model#/api-key](https://bailian.console.aliyun.com/?tab=model#/api-key)
+* **Obtain API Key:** Visit the Alibaba Cloud console to apply for your API Key: [https://bailian.console.aliyun.com/?tab=model#/api-key](https://bailian.console.aliyun.com/?tab=model#/api-key); Visit [https://www.bigmodel.cn/](https://www.bigmodel.cn/) to apply for a BigModel API Key.
 * **Configure:** Add the obtained API Key to your `application-local.yml` file.
 
 **Note on Models:**

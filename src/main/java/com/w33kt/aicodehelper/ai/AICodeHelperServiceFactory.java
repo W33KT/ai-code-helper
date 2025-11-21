@@ -1,6 +1,7 @@
 package com.w33kt.aicodehelper.ai;
 
 import com.w33kt.aicodehelper.ai.tools.InterviewQuestionTool;
+import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
@@ -25,6 +26,9 @@ public class AICodeHelperServiceFactory {
     @Resource
     private ContentRetriever contentRetriever;
 
+    @Resource
+    private McpToolProvider mcpToolProvider;
+
     @Bean
     public AICodeHelperService aiCodeHelperService() {
         return AiServices.builder(AICodeHelperService.class)
@@ -36,6 +40,7 @@ public class AICodeHelperServiceFactory {
                         .build())
                 .contentRetriever(contentRetriever)
                 .tools(new InterviewQuestionTool())
+                .toolProvider(mcpToolProvider)
                 .build();
     }
 }
