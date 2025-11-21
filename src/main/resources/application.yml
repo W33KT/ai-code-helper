@@ -14,6 +14,9 @@ langchain4j:
       chat-model:
         model-name: qwen-max
         api-key: <Your API Key here>
+      embedding-model:
+        model-name: text-embedding-v4
+        api-key: <You API Key here>
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:

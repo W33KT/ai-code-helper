@@ -2,6 +2,7 @@ package com.w33kt.aicodehelper.ai;
 
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.service.AiServices;
 import dev.langchain4j.store.memory.chat.ChatMemoryStore;
 import jakarta.annotation.Resource;
@@ -20,6 +21,9 @@ public class AICodeHelperServiceFactory {
     @Resource
     private ChatMemoryStore persistentChatMemoryStore;
 
+    @Resource
+    private ContentRetriever contentRetriever;
+
     @Bean
     public AICodeHelperService aiCodeHelperService() {
         return AiServices.builder(AICodeHelperService.class)
@@ -29,6 +33,7 @@ public class AICodeHelperServiceFactory {
                         .id(memoryId)
                         .chatMemoryStore(persistentChatMemoryStore)
                         .build())
+                .contentRetriever(contentRetriever)
                 .build();
     }
 }

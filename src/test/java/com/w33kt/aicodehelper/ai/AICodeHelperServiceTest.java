@@ -17,5 +17,15 @@ class AICodeHelperServiceTest {
         message = "Who am I?";
         response = aiCodeHelperService.chat(1, message);
         System.out.println(response);
+        message = "How to study Java? Can you give me some common interview questions?";
+        response = aiCodeHelperService.chat(1, message);
+        System.out.println(response);
+    }
+
+    @Test
+    void testRag() {
+        String message = "How to study Java? Can you give me some common interview questions?";
+        String response = aiCodeHelperService.chat(1, message);
+        System.out.println(response);
     }
 }
