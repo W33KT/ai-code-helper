@@ -1,5 +1,6 @@
 package com.w33kt.aicodehelper.ai;
 
+import com.w33kt.aicodehelper.ai.tools.InterviewQuestionTool;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
@@ -34,6 +35,7 @@ public class AICodeHelperServiceFactory {
                         .chatMemoryStore(persistentChatMemoryStore)
                         .build())
                 .contentRetriever(contentRetriever)
+                .tools(new InterviewQuestionTool())
                 .build();
     }
 }
