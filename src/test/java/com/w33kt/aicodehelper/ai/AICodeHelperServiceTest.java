@@ -24,14 +24,14 @@ class AICodeHelperServiceTest {
 
     @Test
     void testRag() {
-        String message = "How to study Java? Can you give me some common interview questions?";
+        String message = "How to study Java? Also, please use your tool to search for interview questions specifically about 'Java concurrency'";
         String response = aiCodeHelperService.chat(1, message);
         System.out.println(response);
     }
 
     @Test
     void testMcp() {
-        String message = "Do you know who is OA-LEAVE7?";
+        String message = "Please search the web for who is the Overwatch Player Leave";
         String response = aiCodeHelperService.chat(1, message);
         System.out.println(response);
     }

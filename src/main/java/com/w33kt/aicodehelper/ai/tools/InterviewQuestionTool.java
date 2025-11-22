@@ -5,6 +5,7 @@ import dev.langchain4j.agent.tool.Tool;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.stereotype.Component;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -17,12 +18,15 @@ import java.util.List;
  * @author tankaiwen
  */
 @Slf4j
+@Component
 public class InterviewQuestionTool {
 
     @Tool(name = "interviewQuestionSearch", value = """
            Retrieves relevant interview questions from mianshiya.com based on a keyword.
            Use this tool when the user asks for interview questions about specific technologies,
            programming concepts, or job-related topics. The input should be a clear search term.
+           The keyword should be translated to Chinese.
+           If the output text uses a different language than the input, the output should be converted to the input language.
            """
     )
     public String searchInterviewQuestions(@P(value = "the keyword to search") String keyword) {
