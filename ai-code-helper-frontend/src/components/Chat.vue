@@ -22,13 +22,14 @@
     <el-footer class="chat-footer">
       <el-input
         v-model="newMessage"
-        placeholder="Ask me anything..."
+        :disabled="!memoryId"
+        :placeholder="inputPlaceholder"
         @keyup.enter="sendMessage"
         size="large"
         class="chat-input"
       >
         <template #append>
-          <el-button :icon="Promotion" @click="sendMessage" />
+          <el-button :icon="Promotion" @click="sendMessage" :disabled="!memoryId" />
         </template>
       </el-input>
     </el-footer>
@@ -36,18 +37,29 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, onMounted, nextTick, computed } from 'vue';
 import { useEventSource } from '@vueuse/core';
 import { marked } from 'marked';
 import { Promotion } from '@element-plus/icons-vue'
+import axios from 'axios';
 
 const messages = ref([]);
 const newMessage = ref('');
 const memoryId = ref(null);
 const scrollbarRef = ref();
 
-onMounted(() => {
-  memoryId.value = Date.now() % 2147483647;
+const inputPlaceholder = computed(() => {
+  return memoryId.value ? 'Ask me anything...' : 'Initializing chat...';
+});
+
+onMounted(async () => {
+  try {
+    const response = await axios.post('http://localhost:8081/api/ai/chat/start');
+    memoryId.value = response.data.memoryId;
+  } catch (error) {
+    console.error('Failed to start chat session:', error);
+    // Optionally, show an error message to the user
+  }
 });
 
 const scrollToBottom = () => {
@@ -57,7 +69,7 @@ const scrollToBottom = () => {
 };
 
 const sendMessage = () => {
-  if (newMessage.value.trim() === '') return;
+  if (newMessage.value.trim() === '' || !memoryId.value) return;
 
   const userMessage = { id: Date.now(), text: newMessage.value, isUser: true };
   messages.value.push(userMessage);

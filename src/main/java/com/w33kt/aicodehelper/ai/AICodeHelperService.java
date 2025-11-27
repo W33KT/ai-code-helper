@@ -10,8 +10,8 @@ import reactor.core.publisher.Flux;
  */
 public interface AICodeHelperService {
     @SystemMessage(fromResource = "system-prompt.txt")
-    String chat(@MemoryId int memoryId, @UserMessage String userMessage);
+    String chat(@MemoryId String memoryId, @UserMessage String userMessage);
 
     @SystemMessage(fromResource = "system-prompt.txt")
-    Flux<String> chatStream(@MemoryId int memoryId, @UserMessage String userMessage);
+    Flux<String> chatStream(@MemoryId String memoryId, @UserMessage String userMessage);
 }
