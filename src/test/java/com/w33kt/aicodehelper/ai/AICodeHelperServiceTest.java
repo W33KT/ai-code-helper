@@ -35,4 +35,9 @@ class AICodeHelperServiceTest {
         String response = aiCodeHelperService.chat("1", message);
         System.out.println(response);
     }
+
+    @Test
+    void testMonitor() {
+        // This is a func to test my another project, don't care :)
+    }
 }
